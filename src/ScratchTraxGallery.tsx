@@ -113,11 +113,7 @@ export function ScratchTraxGallery({
         </div>
       </div>
       <div className="mt-6 space-x-3">
-        <AddNew
-          setJsonInfo={setJsonInfo}
-          jsonInfo={jsonInfo}
-          refreshTraxGallery={refreshTraxGallery}
-        />
+        <AddNew jsonInfo={jsonInfo} refreshTraxGallery={refreshTraxGallery} />
         <Button onClick={logoutUser} className="bates-button">
           Log Out
         </Button>

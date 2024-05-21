@@ -9,7 +9,7 @@ import {
 
 // modified from: https://www.material-tailwind.com/docs/react/drawer
 
-export function AddNew({ setJsonInfo, jsonInfo, refreshTraxGallery }) {
+export function AddNew({ jsonInfo, refreshTraxGallery }) {
   const [open, setOpen] = useState(false);
   const openDrawer = () => setOpen(true);
   const closeDrawer = () => setOpen(false);
@@ -31,7 +31,7 @@ export function AddNew({ setJsonInfo, jsonInfo, refreshTraxGallery }) {
       embedURL: embedURL,
     });
     console.log(jsonInfo);
-    refreshTraxGallery(); // trigger Gallery to refresh
+    refreshTraxGallery(); // trigger ScratchTraxGallery to refresh
   };
 
   return (
