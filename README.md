@@ -1,30 +1,26 @@
-# React + TypeScript + Vite
+# s33 Final Project Example
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repo provides an example (hopefully helpful for you to follow!) of what a final project might look like, using React+Vite, Tailwind CSS, Material Tailwind, and Firebase for backend authentication and storage.
 
-Currently, two official plugins are available:
+Note that many of the components are modified/customized versions of pre-built components available on Material Tailwind's site (see, e.g., LoginForm, ScratchTraxGallery).  Comments are provided at the top of those components identifying the MW source.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Of particular interest to you should be:
+- Use of local state inside App, keeping track of what the current component (screen) to display should be, using a ternary (if-then) operator to determine which component(s) to display based on state, and also passing setter functions and/or state variables as arguments to other components as needed.
+- An enumeration inside App to make code more reader friendly / robust.
+- For forcing a refresh of any component, see the refresh/setRefresh and subsequent refreshTraxGallery code at the top of refreshTraxGallery, and notice how the latter is passed to another component to allow remote refreshing.
+- For fetching a user-info JSON file from Firebase storage, see details in the loginUser function inside LoginForm.  (There are surely better approaches, e.g., using Firebase's backend DB, but this will let you get something going quickly using utilities you have already set up.)
+- For pushing an updated user-info JSON file to storage, see details in the logoutUser and writeJsonFile functions inside ScratchTraxGallery.
+- Extending the color scheme to include Bates-specific HTML coloring on buttons (see tailwind.config.js and input.css).
 
-## Expanding the ESLint configuration
+## Issue with CORS: Hack Fix
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+If you use the approach above for fetching a JSON from Firebase storage, your browser may not allow the file on getBytes request due to CORS (cross-origin resource sharing) rules.  While the following is far from an ideal / appropriate solution, it will let you get to test a working implementation quickly without having to dig into more details.
 
-- Configure the top-level `parserOptions` property like this:
+The easiest fix is to disable CORS checks when you start your browser.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+See https://simplelocalize.io/blog/posts/what-is-cors/#3-disable-browser-cors-checks.
+
+For Mac, this can be accomplished by running Chrome from the command line using:
 ```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+open /Applications/Google\ Chrome.app --args --user-data-dir="/var/tmp/chrome-dev-disabled-security" --disable-web-security
+```
