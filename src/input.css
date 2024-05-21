@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.bates-button {
+  @apply bg-bates-dark hover:bg-bates-light;
+}
