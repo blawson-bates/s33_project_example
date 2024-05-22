@@ -9,7 +9,18 @@ import {
 
 // modified from: https://www.material-tailwind.com/docs/react/drawer
 
+// for typing arguments, see:
+// https://dev.to/elhamnajeebullah/react-typescript-what-is-reactfc-and-why-should-i-use-it-4029
+//interface AddNewProps {
+//  jsonInfo: object[]; // list of objects
+//  refreshTraxGallery: () => void;
+//}
+
 export function AddNew({ jsonInfo, refreshTraxGallery }) {
+  //export const AddNew: React.FC<AddNewProps> = ({
+  //  jsonInfo,
+  //  refreshTraxGallery,
+  //}) => {
   const [open, setOpen] = useState(false);
   const openDrawer = () => setOpen(true);
   const closeDrawer = () => setOpen(false);

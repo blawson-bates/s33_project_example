@@ -16,12 +16,14 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 // modified from: https://www.material-tailwind.com/docs/react/form
 
 // note that a reference to App's setWhichScreen is passed as an arg
-export function SignupForm({ setWhichScreen, setCurrentUser, setJsonInfo }) {
+//export function SignupForm({ setWhichScreen, setCurrentUser, setJsonInfo }) {
+export function SignupForm({ setWhichScreen, setCurrentUser }) {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const signupUser = (event) => {
+  //const signupUser = (event) => {
+  const signupUser = () => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed up

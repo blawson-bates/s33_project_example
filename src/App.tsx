@@ -5,9 +5,6 @@ import { SignupForm } from "./SignupForm";
 import { ScratchTraxGallery } from "./ScratchTraxGallery";
 import { ScratchTraxPlayer } from "./ScratchTraxPlayer";
 
-import { auth } from "./firebase";
-import { onAuthStateChanged } from "firebase/auth";
-
 export enum ScreenType {
   Login = 0,
   Signup = 1,
@@ -44,7 +41,7 @@ function App() {
               <SignupForm
                 setWhichScreen={setWhichScreen}
                 setCurrentUser={setCurrentUser}
-                setJsonInfo={setJsonInfo}
+                //setJsonInfo={setJsonInfo}
               />
             </>
           )
@@ -54,14 +51,16 @@ function App() {
             setVideoURL={setVideoURL}
             setCurrentUser={setCurrentUser}
             currentUser={currentUser}
-            setJsonInfo={setJsonInfo}
+            //setJsonInfo={setJsonInfo}
             jsonInfo={jsonInfo}
           />
         ) : (
           <ScratchTraxPlayer
             setWhichScreen={setWhichScreen}
             videoURL={videoURL}
-            username={currentUser.displayName}
+            // // https://stackoverflow.com/questions/44147937/property-does-not-exist-on-type-never
+            // username={currentUser["displayName"]}
+            // //username={currentUser.displayName}
           />
         )}
       </div>

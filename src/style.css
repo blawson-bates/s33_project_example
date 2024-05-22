@@ -1058,12 +1058,12 @@ video {
   margin-top: 2rem;
 }
 
-.mt-px {
-  margin-top: 1px;
-}
-
 .mt-\[8px\] {
   margin-top: 8px;
+}
+
+.mt-px {
+  margin-top: 1px;
 }
 
 .box-border {

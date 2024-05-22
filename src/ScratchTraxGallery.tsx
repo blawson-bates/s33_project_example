@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Typography } from "@material-tailwind/react";
 import { Button } from "@material-tailwind/react";
 import { ScreenType } from "./App";
@@ -25,7 +25,7 @@ export function ScratchTraxGallery({
   setVideoURL,
   setCurrentUser,
   currentUser,
-  setJsonInfo,
+  //setJsonInfo,
   jsonInfo,
 }) {
   // just a state variable to reset inside AddNew when jsonInfo is updated
@@ -33,7 +33,10 @@ export function ScratchTraxGallery({
   // see "Forcing an Update on a Function Component" @
   // https://blog.logrocket.com/how-when-to-force-react-component-re-render/
   const [refresh, setRefresh] = useState("");
-  const refreshTraxGallery = () => setRefresh({ ...refresh });
+
+  // since refresh is a string, should not have been using ... to spread
+  //const refreshTraxGallery = () => setRefresh({ ...refresh });
+  const refreshTraxGallery = () => setRefresh(refresh);
 
   // format:   http://img.youtube.com/vi/[video-id]/[thumbnail-number].jpg
   // videoURL: https://www.youtube.com/embed/P2Gbbd6pVMg?si=vLIzIaxuDG45bXcD&autoplay=1
@@ -59,7 +62,8 @@ export function ScratchTraxGallery({
     // Blob object representing the JSON data
     console.log(jsonBlob);
 
-    uploadBytes(jsonRef, jsonBlob).then((snapshot) => {
+    //uploadBytes(jsonRef, jsonBlob).then((snapshot) => {
+    uploadBytes(jsonRef, jsonBlob).then(() => {
       console.log("Uploaded file " + dirName + "info.json to Cloud Storage!");
     });
   };

@@ -1,9 +1,10 @@
-import React from "react";
+//import React from "react";
 import { Button } from "@material-tailwind/react";
 import { ScreenType } from "./App";
 
 // iframe from YouTube's embed option, with camel-case names per React
-export function ScratchTraxPlayer({ setWhichScreen, username, videoURL }) {
+//export function ScratchTraxPlayer({ setWhichScreen, username, videoURL }) {
+export function ScratchTraxPlayer({ setWhichScreen, videoURL }) {
   return (
     <div className="flex flex-col items-center border-2 border-black border-solid rounded-lg bg-gray-200 w-full h-full p-8">
       <iframe
@@ -12,7 +13,7 @@ export function ScratchTraxPlayer({ setWhichScreen, username, videoURL }) {
         src={videoURL}
         title="YouTube video player"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerPolicy="ustrict-origin-when-cross-origin"
+        referrerPolicy="strict-origin-when-cross-origin"
         allowFullScreen
       ></iframe>
       <Button

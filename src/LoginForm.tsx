@@ -16,7 +16,8 @@ export function LoginForm({ setWhichScreen, setCurrentUser, setJsonInfo }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const loginUser = (event) => {
+  //const loginUser = (event) => {
+  const loginUser = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
